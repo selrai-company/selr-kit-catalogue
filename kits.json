@@ -163,6 +163,39 @@
           "value": "handoff"
         }
       ]
+    },
+    {
+      "id": "gohighlevel-stack",
+      "name": "GoHighLevel Stack",
+      "emoji": "🔌",
+      "tag": "AI SKILL DROP",
+      "blurb": "Eleven skills that run your GoHighLevel account from chat.",
+      "dropped": "2026-08-13",
+      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/75c85171",
+      "install_prompt": "",
+      "detect": []
+    },
+    {
+      "id": "bill-guard-invoice-protection",
+      "name": "Bill Guard ( Invoice protection. )",
+      "emoji": "🛡️",
+      "tag": "AI SKILL DROP",
+      "blurb": "One prompt installs a checker that reads any bill and tells you safe to pay, query, hold, ",
+      "dropped": "2026-08-14",
+      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/9eb20690",
+      "install_prompt": "",
+      "detect": []
+    },
+    {
+      "id": "keeper-password-manager",
+      "name": "Keeper Password Manager",
+      "emoji": "🔐",
+      "tag": "AI SKILL DROP",
+      "blurb": "Store every password and document safely, and use them from a chat.",
+      "dropped": "2026-08-14",
+      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/9260c933",
+      "install_prompt": "",
+      "detect": []
     }
   ]
 }
