@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "as_of": "2026-08-14",
+  "as_of": "2026-08-17",
   "classroom_url": "https://www.skool.com/selr-ai-2055/classroom",
   "kits": [
     {
@@ -10,8 +10,14 @@
       "tag": "EVERYONE",
       "blurb": "A visual health report of your skills folder.",
       "dropped": "2026-07-29",
+      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/5eb5cdae",
       "install_prompt": "Install and run the skill-library-revamp skill for me, following the install steps in https://github.com/luke-heka/skill-library-revamp",
-      "detect": [{ "kind": "skill", "value": "skill-library-revamp" }]
+      "detect": [
+        {
+          "kind": "skill",
+          "value": "skill-library-revamp"
+        }
+      ]
     },
     {
       "id": "model-routing",
@@ -20,11 +26,22 @@
       "tag": "EVERYONE",
       "blurb": "The right model for every job.",
       "dropped": "2026-07-29",
+      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/7dca0a2b",
       "install_prompt": "Fetch https://raw.githubusercontent.com/luke-heka/model-routing/main/SETUP.md and follow it.",
       "detect": [
-        { "kind": "agent", "value": "opus-medium" },
-        { "kind": "agent", "value": "fable-high" },
-        { "kind": "file_contains", "path": ".claude/CLAUDE.md", "value": "Model routing" }
+        {
+          "kind": "agent",
+          "value": "opus-medium"
+        },
+        {
+          "kind": "agent",
+          "value": "fable-high"
+        },
+        {
+          "kind": "file_contains",
+          "path": ".claude/CLAUDE.md",
+          "value": "Model routing"
+        }
       ]
     },
     {
@@ -34,8 +51,14 @@
       "tag": "EVERYONE",
       "blurb": "Six checks, one report. Nothing runs.",
       "dropped": "2026-07-29",
+      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/b8ee6a8a",
       "install_prompt": "Install the skill-install-report skill for me, following the install steps in https://github.com/luke-heka/skill-install-report-kit",
-      "detect": [{ "kind": "skill", "value": "skill-install-report" }]
+      "detect": [
+        {
+          "kind": "skill",
+          "value": "skill-install-report"
+        }
+      ]
     },
     {
       "id": "media-library-setup",
@@ -44,8 +67,14 @@
       "tag": "AI SKILL DROP",
       "blurb": "Tidies your Drive and transcribes every video.",
       "dropped": "2026-07-30",
+      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/d4add81a",
       "install_prompt": "Install and run the media-library-setup skill for me, following the install steps in https://github.com/luke-heka/media-library-setup",
-      "detect": [{ "kind": "skill", "value": "media-library-setup" }]
+      "detect": [
+        {
+          "kind": "skill",
+          "value": "media-library-setup"
+        }
+      ]
     },
     {
       "id": "meta-ads-connector",
@@ -54,8 +83,14 @@
       "tag": "AI SKILL DROP",
       "blurb": "Run your Meta ads by talking to Claude.",
       "dropped": "2026-07-30",
+      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/4d5fbff2",
       "install_prompt": "Install the Meta Ads connector kit for me using the prompt at https://raw.githubusercontent.com/luke-heka/meta-ads-connector/main/setup-prompt.md — fetch that file and follow it exactly.",
-      "detect": [{ "kind": "skill", "value": "meta-ads-connector" }]
+      "detect": [
+        {
+          "kind": "skill",
+          "value": "meta-ads-connector"
+        }
+      ]
     },
     {
       "id": "brain-builder",
@@ -64,8 +99,14 @@
       "tag": "AI SKILL DROP",
       "blurb": "Turn what you know into an expert your Claude thinks with.",
       "dropped": "2026-08-04",
+      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/231a95b0",
       "install_prompt": "Clone https://github.com/luke-heka/brain-builder and follow SETUP-PROMPT.md to set up Brain Builder.",
-      "detect": [{ "kind": "skill", "value": "brain-builder" }]
+      "detect": [
+        {
+          "kind": "skill",
+          "value": "brain-builder"
+        }
+      ]
     },
     {
       "id": "dashboard-design-kit",
@@ -74,8 +115,14 @@
       "tag": "AI SKILL DROP",
       "blurb": "Eight screens and 65 charts, in your own brand.",
       "dropped": "2026-08-08",
+      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/ee4b2eb8",
       "install_prompt": "Install the dashboard-design-kit skill for me, following the install steps in https://github.com/luke-heka/dashboard-design-kit",
-      "detect": [{ "kind": "skill", "value": "dashboard-design-kit" }]
+      "detect": [
+        {
+          "kind": "skill",
+          "value": "dashboard-design-kit"
+        }
+      ]
     },
     {
       "id": "agent-team-kit",
@@ -84,8 +131,14 @@
       "tag": "AI SKILL DROP",
       "blurb": "Give your business an agent team. Five agents, your own data.",
       "dropped": "",
+      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/d803de98",
       "install_prompt": "Install and run the agent team kit for me, following the README in https://github.com/luke-heka/agent-team-kit. Clone it into ~/agent-team, run ./bin/setup.sh, show me what the money agent answers, then tell me in plain English how to point it at my own numbers.",
-      "detect": [{ "kind": "path", "value": "agent-team" }]
+      "detect": [
+        {
+          "kind": "path",
+          "value": "agent-team"
+        }
+      ]
     },
     {
       "id": "everyday-skills",
@@ -94,11 +147,21 @@
       "tag": "EVERYONE",
       "blurb": "Grill me, teach and handoff — three you will use daily.",
       "dropped": "",
+      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/218d882f",
       "install_prompt": "Clone https://github.com/selrai-company/mp-skills-kit and follow docs/start/setup.md to install the Matt Pocock skills.",
       "detect": [
-        { "kind": "skill", "value": "grill-me" },
-        { "kind": "skill", "value": "teach" },
-        { "kind": "skill", "value": "handoff" }
+        {
+          "kind": "skill",
+          "value": "grill-me"
+        },
+        {
+          "kind": "skill",
+          "value": "teach"
+        },
+        {
+          "kind": "skill",
+          "value": "handoff"
+        }
       ]
     }
   ]

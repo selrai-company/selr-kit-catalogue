@@ -7,10 +7,12 @@ consequences worth knowing before trusting this:
 
   * The first sign-in has to be done by a person, once. After that the session
     is kept in a browser profile beside this script and reused.
-  * Skool can change the look of that page whenever it likes, and this reads the
-    page. So it is built to fail loudly rather than quietly: a run that finds no
-    courses at all is treated as broken, never as "nothing new". Otherwise an
-    expired sign-in would look exactly like a quiet week, for ever.
+  * Skool can change the look of that page whenever it likes. So this reads the
+    list the page renders itself from, not the tiles it renders - the markup has
+    already been rebuilt once underneath this. Either way it is built to fail
+    loudly rather than quietly: a run that finds no courses at all is treated as
+    broken, never as "nothing new". Otherwise an expired sign-in would look
+    exactly like a quiet week, for ever.
 
 What it writes is deliberately incomplete. The classroom knows a kit's name,
 blurb and drop date; it cannot know the kit's fingerprint, because that is a
@@ -41,6 +43,18 @@ PROFILE = HERE / ".skool-profile"
 CONFIG = HERE / "watch.config.json"
 
 CLASSROOM = "https://www.skool.com/selr-ai-2055/classroom"
+
+# Skool marks a finished course 2 and one still being written 1. Anything not
+# published is held back rather than drafted: a card pointing at a lesson a
+# member cannot open is worse than a card that arrives a day late, and the next
+# run picks it up by itself once it goes live.
+PUBLISHED = 2
+
+# Classroom titles lead with an emoji. It is worth keeping for the card, but it
+# has to come off the name before anything is compared - otherwise every kit
+# already in the list reads as new, because "Brain Builder" and "\N{BRAIN} Brain
+# Builder" are not the same string.
+LEADING_SYMBOLS = re.compile(r"^[^\w(]+")
 
 # Courses that exist in the classroom but are not kits. Extend this rather than
 # teaching the reader to be clever: a wrong guess here is a card in front of
@@ -73,18 +87,41 @@ def slug_of(url: str) -> str:
     return url.rstrip("/").rsplit("/", 1)[-1].lower()
 
 
+def plain_name(title: str) -> str:
+    """A classroom title with its leading emoji taken off, for comparing."""
+    return LEADING_SYMBOLS.sub("", title).strip()
+
+
+def emoji_of(title: str) -> str:
+    """The emoji a classroom title leads with, if it leads with one."""
+    found = LEADING_SYMBOLS.match(title)
+    return found.group(0).strip() if found else ""
+
+
+def kebab(text: str) -> str:
+    """An id in the style of the ones already in the list, not Skool's hex."""
+    return "-".join(re.findall(r"[a-z0-9]+", text.lower()))[:60]
+
+
+def is_ready(course: dict) -> bool:
+    """Published, and not calling itself a draft in its own title."""
+    return course["published"] and "(draft" not in course["name"].lower()
+
+
 # ----------------------------------------------------------------- the browser
 
 def read_classroom(headless: bool = True) -> list[dict]:
-    """Every course card on the classroom page.
+    """Every course in the classroom, read from the page's own data.
 
-    Matched on the shape of the address rather than on class names, because
-    class names in a modern web page are generated and change without warning,
-    while the address of a lesson is part of how the site works.
+    The page ships the list it draws itself from in a ``__NEXT_DATA__`` script
+    tag, and that is what this reads. It used to read the tiles instead, which
+    stopped working the day Skool rebuilt them as drag-sortable panels with no
+    links inside them - the addresses this matched on simply stopped existing.
+    The data behind the page survived that change untouched, and carries the
+    drop date and publish state as well, which the tiles never showed.
     """
     from playwright.sync_api import sync_playwright
 
-    courses: list[dict] = []
     with sync_playwright() as pw:
         browser = pw.chromium.launch_persistent_context(
             str(PROFILE), headless=headless, channel="chrome")
@@ -99,31 +136,37 @@ def read_classroom(headless: bool = True) -> list[dict]:
                 "Skool did not show the classroom - the saved sign-in has "
                 "expired. Run this again with --login to sign in.")
 
-        found = page.eval_on_selector_all(
-            'a[href*="/classroom/"]',
-            """els => els.map(a => {
-                 const card = a.closest('[class*=card], li, article') || a;
-                 const text = (card.innerText || '').trim().split('\\n')
-                     .map(s => s.trim()).filter(Boolean);
-                 return {href: a.href, lines: text.slice(0, 4)};
-               })""",
-        )
+        blob = page.eval_on_selector("#__NEXT_DATA__", "el => el.textContent") \
+            if page.query_selector("#__NEXT_DATA__") else None
         browser.close()
 
-    seen: set[str] = set()
-    for row in found:
-        slug = slug_of(row["href"])
-        if not slug or slug == "classroom" or slug in seen:
-            continue
-        seen.add(slug)
-        lines = [ln for ln in row["lines"] if ln and "%" not in ln]
-        if not lines:
+    if not blob:
+        raise RuntimeError(
+            "The classroom page carried no __NEXT_DATA__ at all, so there was "
+            "nothing to read. The page has been rebuilt.")
+    try:
+        listed = json.loads(blob)["props"]["pageProps"]["allCourses"]
+    except (ValueError, KeyError, TypeError):
+        raise RuntimeError(
+            "The classroom page no longer keeps its course list at "
+            "props.pageProps.allCourses. The page has been rebuilt.")
+
+    courses: list[dict] = []
+    for item in listed:
+        meta = item.get("metadata") or {}
+        title = (meta.get("title") or "").strip()
+        slug = (item.get("name") or "").strip().lower()
+        if not title or not slug:
             continue
         courses.append({
             "slug": slug,
-            "url": row["href"].split("?")[0],
-            "name": lines[0],
-            "blurb": lines[1] if len(lines) > 1 else "",
+            "url": f"{CLASSROOM}/{slug}",
+            "name": title,
+            "blurb": (meta.get("desc") or "").strip(),
+            "published": item.get("state") == PUBLISHED,
+            # The day the course was made, which beats the day this happened to
+            # notice it - the old reader could only ever write "today".
+            "created": (item.get("createdAt") or "")[:10],
         })
     return courses
 
@@ -131,13 +174,13 @@ def read_classroom(headless: bool = True) -> list[dict]:
 # ------------------------------------------------------------------ the diff
 
 def already_known(catalogue: dict, course: dict, skip: list[str]) -> bool:
-    name = course["name"].strip().lower()
+    name = plain_name(course["name"]).lower()
     if any(word in name for word in skip):
         return True
     for kit in catalogue.get("kits", []):
         if kit.get("id", "").lower() == course["slug"]:
             return True
-        if kit.get("name", "").strip().lower() == name:
+        if plain_name(kit.get("name", "")).lower() == name:
             return True
         if slug_of(str(kit.get("classroom_url") or "")) == course["slug"]:
             return True
@@ -151,13 +194,16 @@ def draft(course: dict) -> dict:
     with an empty ``detect``, so this is invisible until somebody fills it in -
     which is the whole reason this is safe to commit without being read first.
     """
+    title = plain_name(course["name"])
     return {
-        "id": course["slug"],
-        "name": course["name"],
-        "emoji": "",
+        # Skool's own id is eight characters of hex, which tells a reader
+        # nothing. The address keeps that, so the id can be the readable one.
+        "id": kebab(title) or course["slug"],
+        "name": title,
+        "emoji": emoji_of(course["name"]),
         "tag": "AI SKILL DROP",
         "blurb": course["blurb"][:90],
-        "dropped": date.today().isoformat(),
+        "dropped": course["created"] or date.today().isoformat(),
         "classroom_url": course["url"],
         "install_prompt": "",
         "detect": [],
@@ -237,10 +283,14 @@ def main(argv: list[str] | None = None) -> int:
                     "sign-in has expired or the page has changed shape.")
 
     skip = load_config().get("skip", DEFAULT_SKIP)
-    new = [c for c in courses if not already_known(catalogue, c, skip)]
+    ready = [c for c in courses if is_ready(c)]
+    new = [c for c in ready if not already_known(catalogue, c, skip)]
 
     print(f"{len(courses)} courses in the classroom, "
           f"{len(catalogue.get('kits', []))} in the list, {len(new)} new")
+    held = len(courses) - len(ready)
+    if held:
+        print(f"  {held} still unpublished - held back until they go live")
 
     if not new:
         return 0
