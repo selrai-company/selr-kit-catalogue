@@ -223,7 +223,7 @@ def publish(added: list[dict]) -> int:
         f"Draft {len(added)} new {'entry' if len(added) == 1 else 'entries'} "
         f"from the classroom\n\n"
         f"{names}\n\n"
-        "Written by tools/kit-watch, which reads the classroom three times a "
+        "Written by internal/kit-watch, which reads the classroom three times a "
         "day. Each entry has an empty detect, so every member's tracker drops "
         "it and nobody sees a card until the fingerprint is filled in by hand - "
         "the classroom cannot know what a kit puts on somebody's computer.\n"

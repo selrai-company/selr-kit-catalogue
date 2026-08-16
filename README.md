@@ -66,8 +66,11 @@ On a machine that has the kit:
 It prints every check and what it resolved to. A new entry should read `[installed]` there. If it
 says `missing` on a machine that has the kit, the entry is wrong — fix the entry, never the tracker.
 
-## tools/kit-watch
+## internal/kit-watch
+
+**Everything under `internal/` is for whoever maintains this list, and for nobody else.** The
+repository is public because `kits.json` has to be, not because this folder is of any use to a
+member. It is not part of the kit members install, nothing in `skill-tracker-kit` refers to it, and
+it runs only where you clone this repository.
 
 A scheduled job that reads the classroom three times a day and drafts an entry for anything new.
-**It runs only where you clone this repository.** It is not part of the kit members install, and
-nothing in `skill-tracker-kit` refers to it.

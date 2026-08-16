@@ -7,7 +7,7 @@
   <key>ProgramArguments</key>
   <array>
     <string>__HOME__/selr-kit-catalogue/.venv/bin/python</string>
-    <string>__HOME__/selr-kit-catalogue/tools/kit-watch/watch.py</string>
+    <string>__HOME__/selr-kit-catalogue/internal/kit-watch/watch.py</string>
   </array>
 
   <!-- Morning, afternoon, end of day. Missed runs fire once at next wake. -->
