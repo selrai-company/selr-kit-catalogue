@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.selr.kit-watch.classroom</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>__HOME__/selr-kit-catalogue/.venv/bin/python</string>
+    <string>__HOME__/selr-kit-catalogue/tools/kit-watch/watch.py</string>
+  </array>
+
+  <!-- Morning, afternoon, end of day. Missed runs fire once at next wake. -->
+  <key>StartCalendarInterval</key>
+  <array>
+    <dict><key>Hour</key><integer>7</integer><key>Minute</key><integer>0</integer></dict>
+    <dict><key>Hour</key><integer>13</integer><key>Minute</key><integer>0</integer></dict>
+    <dict><key>Hour</key><integer>18</integer><key>Minute</key><integer>0</integer></dict>
+  </array>
+
+  <!-- The naming standard this kit publishes mandates both log paths: a job
+       with nowhere to write its errors cannot be health-checked at all, so the
+       report has to say "cannot tell" rather than "working". -->
+  <key>StandardOutPath</key><string>__HOME__/Library/Logs/SELR/kit-watch/classroom.out.log</string>
+  <key>StandardErrorPath</key><string>__HOME__/Library/Logs/SELR/kit-watch/classroom.err.log</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>SELR_JOB</key><string>classroom</string>
+    <key>PATH</key><string>/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin</string>
+  </dict>
+
+  <!-- Deliberately false. This reads a website and pushes to a public
+       repository; doing that every time you log in, on top of three times a
+       day, is noise nobody asked for. -->
+  <key>RunAtLoad</key><false/>
+</dict>
+</plist>
