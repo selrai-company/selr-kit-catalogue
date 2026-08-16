@@ -169,11 +169,56 @@
       "name": "GoHighLevel Stack",
       "emoji": "🔌",
       "tag": "AI SKILL DROP",
-      "blurb": "Eleven skills that run your GoHighLevel account from chat.",
+      "blurb": "Run your whole GoHighLevel account by asking for what you want.",
       "dropped": "2026-08-13",
       "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/75c85171",
-      "install_prompt": "",
-      "detect": []
+      "install_prompt": "Install the GoHighLevel stack for me, following the install steps in https://github.com/luke-heka/gohighlevel-stack",
+      "detect": [
+        {
+          "kind": "skill",
+          "value": "ghl-crm"
+        },
+        {
+          "kind": "skill",
+          "value": "ghl-browser"
+        },
+        {
+          "kind": "skill",
+          "value": "ghl-contacts-pipeline"
+        },
+        {
+          "kind": "skill",
+          "value": "ghl-calendars-booking"
+        },
+        {
+          "kind": "skill",
+          "value": "ghl-payments-invoicing"
+        },
+        {
+          "kind": "skill",
+          "value": "ghl-conversation-ai"
+        },
+        {
+          "kind": "skill",
+          "value": "ghl-social-planner"
+        },
+        {
+          "kind": "skill",
+          "value": "ghl-ads-manager"
+        },
+        {
+          "kind": "skill",
+          "value": "ghl-landing-pages"
+        },
+        {
+          "kind": "skill",
+          "value": "ghl-email-flows"
+        },
+        {
+          "kind": "skill",
+          "value": "email-sequence-ghl"
+        }
+      ]
     },
     {
       "id": "bill-guard-invoice-protection",
@@ -191,11 +236,16 @@
       "name": "Keeper Password Manager",
       "emoji": "🔐",
       "tag": "AI SKILL DROP",
-      "blurb": "Store every password and document safely, and use them from a chat.",
+      "blurb": "Store every password and document safely, and reach them from a chat.",
       "dropped": "2026-08-14",
       "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/9260c933",
-      "install_prompt": "",
-      "detect": []
+      "install_prompt": "Install and close out the keeper-setup skill on this machine, following https://github.com/luke-heka/keeper-setup",
+      "detect": [
+        {
+          "kind": "skill",
+          "value": "keeper-setup"
+        }
+      ]
     }
   ]
 }
