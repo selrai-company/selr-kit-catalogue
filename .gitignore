@@ -1,2 +1,8 @@
 .venv/
-internal/kit-watch/.skool-profile/
+
+# A signed-in browser profile, wherever it ends up living. This is deliberately
+# not tied to a path: the watcher has already moved once, and the rule that
+# named its old home stopped matching the moment it did. This repository is
+# public, and what is in here is a live Skool session.
+.skool-profile/
+**/.skool-profile/
