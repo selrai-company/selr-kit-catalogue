@@ -221,8 +221,8 @@
       ]
     },
     {
-      "id": "bill-guard-invoice-protection",
-      "name": "Bill Guard ( Invoice protection. )",
+      "id": "bill-guard",
+      "name": "Bill Guard",
       "emoji": "🛡️",
       "tag": "AI SKILL DROP",
       "blurb": "Reads any bill and says safe to pay, query, hold, or nothing to pay.",

@@ -95,8 +95,16 @@ def slug_of(url: str) -> str:
 
 
 def plain_name(title: str) -> str:
-    """A classroom title with its leading emoji taken off, for comparing."""
-    return LEADING_SYMBOLS.sub("", title).strip()
+    """A classroom title with its leading emoji taken off, for comparing.
+
+    Spacing is tidied on the way through. A title typed as "Bill Guard (
+    Invoice protection. )" is the same kit as one typed without the gaps, and
+    the loose version reads badly on a card, so neither is worth carrying.
+    """
+    text = LEADING_SYMBOLS.sub("", title)
+    text = re.sub(r"\(\s+", "(", text)
+    text = re.sub(r"\s+\)", ")", text)
+    return " ".join(text.split())
 
 
 def emoji_of(title: str) -> str:
