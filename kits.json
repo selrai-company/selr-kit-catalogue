@@ -251,6 +251,17 @@
           "value": "keeper-setup"
         }
       ]
+    },
+    {
+      "id": "chat-namer",
+      "name": "Chat Namer",
+      "emoji": "🏷️",
+      "tag": "AI SKILL DROP",
+      "blurb": "Your Claude Code sidebar, readable at a glance.",
+      "dropped": "2026-08-17",
+      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/aac17ee1",
+      "install_prompt": "Install the chat-namer skill for me, following the install steps in https://github.com/Mr-heka/chat-namer",
+      "detect": []
     }
   ]
 }
