@@ -225,11 +225,16 @@
       "name": "Bill Guard ( Invoice protection. )",
       "emoji": "🛡️",
       "tag": "AI SKILL DROP",
-      "blurb": "One prompt installs a checker that reads any bill and tells you safe to pay, query, hold, ",
+      "blurb": "Reads any bill and says safe to pay, query, hold, or nothing to pay.",
       "dropped": "2026-08-14",
       "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/9eb20690",
-      "install_prompt": "",
-      "detect": []
+      "install_prompt": "Install the bill-guard skill for me, following the install steps in https://github.com/luke-heka/bill-guard",
+      "detect": [
+        {
+          "kind": "skill",
+          "value": "bill-guard"
+        }
+      ]
     },
     {
       "id": "keeper-password-manager",

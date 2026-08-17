@@ -14,10 +14,12 @@ consequences worth knowing before trusting this:
     broken, never as "nothing new". Otherwise an expired sign-in would look
     exactly like a quiet week, for ever.
 
-What it writes is deliberately incomplete. The classroom knows a kit's name,
-blurb and drop date; it cannot know the kit's fingerprint, because that is a
-fact about what the kit puts on somebody's computer and it lives in the kit's
-own repository. So a drafted entry carries an empty ``detect``, and every
+What it writes is deliberately incomplete, but only where it has to be. The
+classroom knows a kit's name, blurb, drop date and the install prompt printed in
+its own lesson, so all four are read and written. It cannot know the kit's
+fingerprint, because that is a fact about what the kit puts on somebody's
+computer and it lives in the kit's own repository. So a drafted entry carries
+everything the classroom states and an empty ``detect``, and every
 member's tracker drops an entry with an empty ``detect`` on the floor. The draft
 is therefore invisible to everybody until a person fills that field in, which is
 what makes it safe for this to commit unattended.
@@ -55,6 +57,11 @@ PUBLISHED = 2
 # already in the list reads as new, because "Brain Builder" and "\N{BRAIN} Brain
 # Builder" are not the same string.
 LEADING_SYMBOLS = re.compile(r"^[^\w(]+")
+
+# How a lesson opens the line it means you to paste. Skool stores the body as a
+# rich-text document, so this reads its blocks rather than its rendered text.
+PROMPT_STARTS = re.compile(r"^(Install|Clone|Fetch|Run|Set up)\b")
+PROMPT_MARKERS = ("copy this first", "press enter", "paste this")
 
 # Courses that exist in the classroom but are not kits. Extend this rather than
 # teaching the reader to be clever: a wrong guess here is a card in front of
@@ -106,6 +113,65 @@ def kebab(text: str) -> str:
 def is_ready(course: dict) -> bool:
     """Published, and not calling itself a draft in its own title."""
     return course["published"] and "(draft" not in course["name"].lower()
+
+
+def lesson_blocks(desc: str) -> list:
+    """A lesson body as a flat list of (kind, text).
+
+    Skool stores a lesson as a rich-text document behind a ``[v2]`` marker, not
+    as HTML. Reading its blocks is steadier than reading the rendered page, and
+    it keeps a pasted command in one piece instead of split across the links and
+    bold runs it is drawn with.
+    """
+    if not desc.startswith("[v2]"):
+        return []
+    try:
+        doc = json.loads(desc[4:])
+    except ValueError:
+        return []
+
+    def text_of(node: dict) -> str:
+        if node.get("type") == "text":
+            return node.get("text", "")
+        return "".join(text_of(c) for c in node.get("content", []))
+
+    out: list = []
+
+    def walk(nodes: list) -> None:
+        for node in nodes:
+            if node.get("type") in ("paragraph", "codeBlock", "heading"):
+                out.append((node.get("type"), text_of(node).strip()))
+            elif node.get("content"):
+                walk(node["content"])
+
+    walk(doc if isinstance(doc, list) else [doc])
+    return out
+
+
+def install_prompt_of(desc: str) -> str:
+    """The line a lesson tells a member to paste, if it prints one.
+
+    Tried in the order the lessons themselves are written, so a change in house
+    style degrades to nothing rather than to something wrong. Nothing found is a
+    fine answer: the entry keeps an empty prompt and a person fills it in.
+    """
+    found = lesson_blocks(desc)
+    # A code block is unambiguous - it is what the classroom uses for "paste
+    # this", and it is the only block whose whitespace is meant to survive.
+    for kind, text in found:
+        if kind == "codeBlock" and text and ("github" in text or PROMPT_STARTS.match(text)):
+            return " ".join(text.split())
+    # Otherwise the block just after the line that introduces it.
+    for i, (_, text) in enumerate(found):
+        if any(m in text.lower() for m in PROMPT_MARKERS):
+            for _, nxt in found[i + 1:i + 3]:
+                if nxt and PROMPT_STARTS.match(nxt):
+                    return " ".join(nxt.split())
+    # Last resort: anything shaped like an install line pointing at a repository.
+    for _, text in found:
+        if PROMPT_STARTS.match(text) and "github" in text:
+            return " ".join(text.split())
+    return ""
 
 
 # ----------------------------------------------------------------- the browser
@@ -171,6 +237,42 @@ def read_classroom(headless: bool = True) -> list[dict]:
     return courses
 
 
+def read_install_prompts(courses: list, headless: bool = True) -> None:
+    """Fill in each course's install prompt from its own lesson.
+
+    Only the courses being drafted are opened, so a quiet run - which is most of
+    them - still costs the one page the list itself lives on. A lesson that
+    cannot be read leaves the prompt empty and says so; it is not worth failing
+    a whole run over, because the entry is invisible either way until somebody
+    fills in the fingerprint.
+    """
+    if not courses:
+        return
+    from playwright.sync_api import sync_playwright
+
+    with sync_playwright() as pw:
+        browser = pw.chromium.launch_persistent_context(
+            str(PROFILE), headless=headless, channel="chrome")
+        page = browser.new_page() if not browser.pages else browser.pages[0]
+        for course in courses:
+            course["install_prompt"] = ""
+            try:
+                page.goto(course["url"], wait_until="domcontentloaded", timeout=45_000)
+                page.wait_for_timeout(2_500)
+                blob = page.eval_on_selector("#__NEXT_DATA__", "el => el.textContent")
+                lessons = (json.loads(blob)["props"]["pageProps"]
+                           .get("course") or {}).get("children", [])
+            except Exception:  # noqa: BLE001 - one unreadable lesson is not a failed run
+                print(f"  could not read the lesson for {course['name']}")
+                continue
+            for lesson in lessons:
+                meta = (lesson.get("course") or {}).get("metadata") or {}
+                course["install_prompt"] = install_prompt_of(meta.get("desc", ""))
+                if course["install_prompt"]:
+                    break
+        browser.close()
+
+
 # ------------------------------------------------------------------ the diff
 
 def already_known(catalogue: dict, course: dict, skip: list[str]) -> bool:
@@ -205,7 +307,9 @@ def draft(course: dict) -> dict:
         "blurb": course["blurb"][:90],
         "dropped": course["created"] or date.today().isoformat(),
         "classroom_url": course["url"],
-        "install_prompt": "",
+        # Printed in the lesson itself, so there is no reason to leave it blank
+        # and no reason to invent one when the lesson does not print it.
+        "install_prompt": course.get("install_prompt", ""),
         "detect": [],
     }
 
@@ -298,7 +402,15 @@ def main(argv: list[str] | None = None) -> int:
     for course in new:
         print(f"  new: {course['name']}  ({course['url']})")
 
+    read_install_prompts(new)
+    for course in new:
+        if not course.get("install_prompt"):
+            print(f"  no install prompt printed in the lesson for {course['name']}")
+
     if args.dry_run:
+        for course in new:
+            if course.get("install_prompt"):
+                print(f"  prompt: {course['install_prompt'][:100]}")
         print("Nothing written - this was a dry run.")
         return 0
 
