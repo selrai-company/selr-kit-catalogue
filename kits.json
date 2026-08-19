@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "as_of": "2026-08-17",
+  "as_of": "2026-08-19",
   "classroom_url": "https://www.skool.com/selr-ai-2055/classroom",
   "kits": [
     {
@@ -261,6 +261,17 @@
       "dropped": "2026-08-17",
       "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/aac17ee1",
       "install_prompt": "Install the chat-namer skill for me, following the install steps in https://github.com/Mr-heka/chat-namer",
+      "detect": []
+    },
+    {
+      "id": "the-always-on-server",
+      "name": "The Always-On Server",
+      "emoji": "🖥️",
+      "tag": "AI SKILL DROP",
+      "blurb": "Rent a small server, lock it down, and run your automations around the clock.",
+      "dropped": "2026-08-19",
+      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/0c6f6eef",
+      "install_prompt": "Clone https://github.com/selrai-assets/deploy-to-vps and follow SETUP-PROMPT.md",
       "detect": []
     }
   ]
