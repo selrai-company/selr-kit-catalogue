@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "as_of": "2026-08-19",
+  "as_of": "2026-08-27",
   "classroom_url": "https://www.skool.com/selr-ai-2055/classroom",
   "kits": [
     {
@@ -11,7 +11,7 @@
       "blurb": "A visual health report of your skills folder.",
       "dropped": "2026-07-29",
       "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/5eb5cdae",
-      "install_prompt": "Install and run the skill-library-revamp skill for me, following the install steps in https://github.com/luke-heka/skill-library-revamp",
+      "install_prompt": "Install and run the skill-library-revamp skill for me, following the install steps in https://github.com/SelrAI-Skool-Community/skill-library-revamp",
       "detect": [
         {
           "kind": "skill",
@@ -27,7 +27,7 @@
       "blurb": "The right model for every job.",
       "dropped": "2026-07-29",
       "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/7dca0a2b",
-      "install_prompt": "Fetch https://raw.githubusercontent.com/luke-heka/model-routing/main/SETUP.md and follow it.",
+      "install_prompt": "Fetch https://raw.githubusercontent.com/SelrAI-Skool-Community/model-routing/main/SETUP.md and follow it.",
       "detect": [
         {
           "kind": "agent",
@@ -52,7 +52,7 @@
       "blurb": "Six checks, one report. Nothing runs.",
       "dropped": "2026-07-29",
       "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/b8ee6a8a",
-      "install_prompt": "Install the skill-install-report skill for me, following the install steps in https://github.com/luke-heka/skill-install-report-kit",
+      "install_prompt": "Install the skill-install-report skill for me, following the install steps in https://github.com/SelrAI-Skool-Community/skill-install-report-kit",
       "detect": [
         {
           "kind": "skill",
@@ -68,7 +68,7 @@
       "blurb": "Tidies your Drive and transcribes every video.",
       "dropped": "2026-07-30",
       "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/d4add81a",
-      "install_prompt": "Install and run the media-library-setup skill for me, following the install steps in https://github.com/luke-heka/media-library-setup",
+      "install_prompt": "Install and run the media-library-setup skill for me, following the install steps in https://github.com/SelrAI-Skool-Community/media-library-setup",
       "detect": [
         {
           "kind": "skill",
@@ -100,7 +100,7 @@
       "blurb": "Turn what you know into an expert your Claude thinks with.",
       "dropped": "2026-08-04",
       "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/231a95b0",
-      "install_prompt": "Clone https://github.com/luke-heka/brain-builder and follow SETUP-PROMPT.md to set up Brain Builder.",
+      "install_prompt": "Clone https://github.com/SelrAI-Skool-Community/brain-builder and follow SETUP-PROMPT.md to set up Brain Builder.",
       "detect": [
         {
           "kind": "skill",
@@ -116,7 +116,7 @@
       "blurb": "Eight screens and 65 charts, in your own brand.",
       "dropped": "2026-08-08",
       "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/ee4b2eb8",
-      "install_prompt": "Install the dashboard-design-kit skill for me, following the install steps in https://github.com/luke-heka/dashboard-design-kit",
+      "install_prompt": "Install the dashboard-design-kit skill for me, following the install steps in https://github.com/SelrAI-Skool-Community/dashboard-design-kit",
       "detect": [
         {
           "kind": "skill",
@@ -132,7 +132,7 @@
       "blurb": "Give your business an agent team. Five agents, your own data.",
       "dropped": "",
       "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/d803de98",
-      "install_prompt": "Install and run the agent team kit for me, following the README in https://github.com/luke-heka/agent-team-kit. Clone it into ~/agent-team, run ./bin/setup.sh, show me what the money agent answers, then tell me in plain English how to point it at my own numbers.",
+      "install_prompt": "Install and run the agent team kit for me, following the README in https://github.com/SelrAI-Skool-Community/agent-team-kit. Clone it into ~/agent-team, run ./bin/setup.sh, show me what the money agent answers, then tell me in plain English how to point it at my own numbers.",
       "detect": [
         {
           "kind": "path",
@@ -172,7 +172,7 @@
       "blurb": "Run your whole GoHighLevel account by asking for what you want.",
       "dropped": "2026-08-13",
       "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/75c85171",
-      "install_prompt": "Install the GoHighLevel stack for me, following the install steps in https://github.com/luke-heka/gohighlevel-stack",
+      "install_prompt": "Install the GoHighLevel stack for me, following the install steps in https://github.com/SelrAI-Skool-Community/gohighlevel-stack",
       "detect": [
         {
           "kind": "skill",
@@ -228,7 +228,7 @@
       "blurb": "Reads any bill and says safe to pay, query, hold, or nothing to pay.",
       "dropped": "2026-08-14",
       "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/9eb20690",
-      "install_prompt": "Install the bill-guard skill for me, following the install steps in https://github.com/luke-heka/bill-guard",
+      "install_prompt": "Install the bill-guard skill for me, following the install steps in https://github.com/SelrAI-Skool-Community/bill-guard",
       "detect": [
         {
           "kind": "skill",
@@ -244,7 +244,7 @@
       "blurb": "Store every password and document safely, and reach them from a chat.",
       "dropped": "2026-08-14",
       "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/9260c933",
-      "install_prompt": "Install and close out the keeper-setup skill on this machine, following https://github.com/luke-heka/keeper-setup",
+      "install_prompt": "Install and close out the keeper-setup skill on this machine, following https://github.com/SelrAI-Skool-Community/keeper-setup",
       "detect": [
         {
           "kind": "skill",
