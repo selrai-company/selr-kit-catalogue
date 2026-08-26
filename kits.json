@@ -84,7 +84,7 @@
       "blurb": "Run your Meta ads by talking to Claude.",
       "dropped": "2026-07-30",
       "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/4d5fbff2",
-      "install_prompt": "Install the Meta Ads connector kit for me using the prompt at https://raw.githubusercontent.com/luke-heka/meta-ads-connector/main/setup-prompt.md — fetch that file and follow it exactly.",
+      "install_prompt": "Install the Meta Ads connector kit for me using the prompt at https://raw.githubusercontent.com/SelrAI-Skool-Community/meta-ads-connector/main/setup-prompt.md — fetch that file and follow it exactly.",
       "detect": [
         {
           "kind": "skill",
