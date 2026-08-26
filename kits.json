@@ -148,7 +148,7 @@
       "blurb": "Grill me, teach and handoff — three you will use daily.",
       "dropped": "",
       "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/218d882f",
-      "install_prompt": "Clone https://github.com/selrai-company/mp-skills-kit and follow docs/start/setup.md to install the Matt Pocock skills.",
+      "install_prompt": "Clone https://github.com/SelrAI-Skool-Community/mp-skills-kit and follow docs/start/setup.md to install the Matt Pocock skills.",
       "detect": [
         {
           "kind": "skill",
@@ -260,7 +260,7 @@
       "blurb": "Your Claude Code sidebar, readable at a glance.",
       "dropped": "2026-08-17",
       "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/aac17ee1",
-      "install_prompt": "Install the chat-namer skill for me, following the install steps in https://github.com/Mr-heka/chat-namer",
+      "install_prompt": "Install the chat-namer skill for me, following the install steps in https://github.com/SelrAI-Skool-Community/chat-namer",
       "detect": []
     },
     {
@@ -271,7 +271,7 @@
       "blurb": "Rent a small server, lock it down, and run your automations around the clock.",
       "dropped": "2026-08-19",
       "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/0c6f6eef",
-      "install_prompt": "Clone https://github.com/selrai-assets/deploy-to-vps and follow SETUP-PROMPT.md",
+      "install_prompt": "Clone https://github.com/SelrAI-Skool-Community/deploy-to-vps and follow SETUP-PROMPT.md",
       "detect": []
     }
   ]
