@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "as_of": "2026-08-27",
+  "as_of": "2026-09-14",
   "classroom_url": "https://www.skool.com/selr-ai-2055/classroom",
   "kits": [
     {
@@ -273,6 +273,136 @@
       "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/0c6f6eef",
       "install_prompt": "Clone https://github.com/SelrAI-Skool-Community/deploy-to-vps and follow SETUP-PROMPT.md",
       "detect": []
+    },
+    {
+      "id": "unlazy-kit",
+      "name": "Unlazy Kit",
+      "emoji": "🛑",
+      "tag": "AI SKILL DROP",
+      "blurb": "Stop Claude saying done when it isn't. Completion gates, with evidence.",
+      "dropped": "2026-08-31",
+      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/1a83bd26",
+      "install_prompt": "Set up the Unlazy Kit for me, following the install steps in https://github.com/SelrAI-Skool-Community/unlazy-kit",
+      "detect": [
+        {
+          "kind": "skill",
+          "value": "unlazy"
+        }
+      ]
+    },
+    {
+      "id": "stay-on-track-kit",
+      "name": "Stay On Track Kit",
+      "emoji": "🎯",
+      "tag": "AI SKILL DROP",
+      "blurb": "Drift fixes, role-lock templates and a drop-in CLAUDE.md block.",
+      "dropped": "2026-08-31",
+      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/ee76afed",
+      "install_prompt": "Set up the Stay On Track Kit for me, following the install steps in https://github.com/SelrAI-Skool-Community/stay-on-track-kit",
+      "detect": [
+        {
+          "kind": "skill",
+          "value": "stay-on-track"
+        }
+      ]
+    },
+    {
+      "id": "skill-router-kit",
+      "name": "Skill Router Kit",
+      "emoji": "🔎",
+      "tag": "AI SKILL DROP",
+      "blurb": "A librarian that routes any request to the right installed skill.",
+      "dropped": "2026-08-31",
+      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/48edffc4",
+      "install_prompt": "Set up the Skill Router Kit for me, following the install steps in https://github.com/SelrAI-Skool-Community/skill-router-kit",
+      "detect": [
+        {
+          "kind": "skill",
+          "value": "find-skill"
+        }
+      ]
+    },
+    {
+      "id": "claude-chrome-kit",
+      "name": "Claude Chrome Kit",
+      "emoji": "🌐",
+      "tag": "AI SKILL DROP",
+      "blurb": "Claude drives a real Chrome. Forms, screenshots, speed checks.",
+      "dropped": "2026-08-31",
+      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/cbb4c5af",
+      "install_prompt": "Set up the Claude Chrome Kit for me, following the install steps in https://github.com/SelrAI-Skool-Community/claude-chrome-kit",
+      "detect": [
+        {
+          "kind": "file_contains",
+          "path": ".claude.json",
+          "value": "chrome-devtools"
+        }
+      ]
+    },
+    {
+      "id": "humanizer-kit",
+      "name": "Humanizer Kit",
+      "emoji": "✍️",
+      "tag": "AI SKILL DROP",
+      "blurb": "Catches the 35 tells of AI writing and rewrites them out.",
+      "dropped": "2026-08-31",
+      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/78092120",
+      "install_prompt": "Set up the Humanizer Kit for me, following the install steps in https://github.com/SelrAI-Skool-Community/humanizer-kit",
+      "detect": [
+        {
+          "kind": "skill",
+          "value": "humanizer"
+        }
+      ]
+    },
+    {
+      "id": "claude-sync",
+      "name": "claude-sync",
+      "emoji": "🔄",
+      "tag": "AI SKILL DROP",
+      "blurb": "Your Claude setup, synced to every machine you use, solo or with your team.",
+      "dropped": "2026-08-31",
+      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/d2842e1a",
+      "install_prompt": "Set up claude-sync for me, following the install steps in https://github.com/SelrAI-Skool-Community/claude-sync",
+      "detect": [
+        {
+          "kind": "file_contains",
+          "path": ".claude/plugins/installed_plugins.json",
+          "value": "claude-sync@selr-claude-sync"
+        }
+      ]
+    },
+    {
+      "id": "form-kit",
+      "name": "Form Kit",
+      "emoji": "📋",
+      "tag": "AI SKILL DROP",
+      "blurb": "Your own form site on your own Vercel account. Unlimited forms and responses.",
+      "dropped": "2026-08-31",
+      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/f01fdce1",
+      "install_prompt": "Set up Form Kit for me, following the install steps in https://github.com/SelrAI-Skool-Community/form-kit",
+      "detect": [
+        {
+          "kind": "skill",
+          "value": "form-kit"
+        }
+      ]
+    },
+    {
+      "id": "video-studio",
+      "name": "Video Studio",
+      "emoji": "🎬",
+      "tag": "AI SKILL DROP",
+      "blurb": "Claude makes your video with you: script, voiceover, screens, rendered MP4.",
+      "dropped": "2026-08-31",
+      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/ef176764",
+      "install_prompt": "Set up Video Studio for me, following the install steps in https://github.com/SelrAI-Skool-Community/video-studio",
+      "detect": [
+        {
+          "kind": "skill",
+          "value": "video-studio"
+        }
+      ]
     }
   ]
 }
