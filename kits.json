@@ -403,6 +403,22 @@
           "value": "video-studio"
         }
       ]
+    },
+    {
+      "id": "website-stack",
+      "name": "Website Stack",
+      "emoji": "🌐",
+      "tag": "AI SKILL DROP",
+      "blurb": "A real website for your business, built and launched from one prompt.",
+      "dropped": "2026-09-14",
+      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/45a39964",
+      "install_prompt": "Set up Website Stack for me, following the install steps in https://github.com/SelrAI-Skool-Community/website-stack/blob/main/INSTALL-PROMPT.md",
+      "detect": [
+        {
+          "kind": "skill",
+          "value": "framer-motion"
+        }
+      ]
     }
   ]
 }
