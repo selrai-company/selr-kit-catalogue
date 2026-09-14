@@ -451,6 +451,22 @@
           "value": "framer-motion"
         }
       ]
+    },
+    {
+      "id": "brand-board",
+      "name": "Brand Board",
+      "emoji": "🖌️",
+      "tag": "AI SKILL DROP",
+      "blurb": "Your site's real colours and fonts, turned into a brand PDF, board and skill.",
+      "dropped": "2026-09-14",
+      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/ff3ba418",
+      "install_prompt": "Set up Brand Board for me, following the install steps in https://github.com/SelrAI-Skool-Community/brand-board-kit/blob/main/SETUP-PROMPT.md",
+      "detect": [
+        {
+          "kind": "skill",
+          "value": "brand-board"
+        }
+      ]
     }
   ]
 }
