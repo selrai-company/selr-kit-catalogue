@@ -419,6 +419,22 @@
           "value": "higgsfield-connector"
         }
       ]
+    },
+    {
+      "id": "copywriting-brain",
+      "name": "Copywriting Brain",
+      "emoji": "✍️",
+      "tag": "AI SKILL DROP",
+      "blurb": "An expert brain on sales copy your Claude thinks with. Built from 35 sources.",
+      "dropped": "2026-09-14",
+      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/fea319b7",
+      "install_prompt": "Set up the Copywriting Brain for me, following the install steps in https://github.com/SelrAI-Skool-Community/copywriting-brain/blob/main/SETUP-PROMPT.md",
+      "detect": [
+        {
+          "kind": "skill",
+          "value": "brain-direct-response-copywriting-for-coaches-and-consultants"
+        }
+      ]
     }
   ]
 }
