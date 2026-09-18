@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "as_of": "2026-09-14",
+  "as_of": "2026-09-18",
   "classroom_url": "https://www.skool.com/selr-ai-2055/classroom",
   "kits": [
     {
@@ -465,6 +465,26 @@
         {
           "kind": "skill",
           "value": "brand-board"
+        }
+      ]
+    },
+    {
+      "id": "content-creator-kit",
+      "name": "Content Creator Kit",
+      "emoji": "🎥",
+      "tag": "AI SKILL DROP",
+      "blurb": "One recording in, captioned reels out, scheduled to Instagram and LinkedIn.",
+      "dropped": "",
+      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/3fdfa879",
+      "install_prompt": "Set up the Content Creator Kit for me, following the install steps in https://github.com/SelrAI-Skool-Community/content-creator-kit/blob/main/SETUP-PROMPT.md",
+      "detect": [
+        {
+          "kind": "skill",
+          "value": "reel-editor"
+        },
+        {
+          "kind": "skill",
+          "value": "reel-scheduler"
         }
       ]
     }
