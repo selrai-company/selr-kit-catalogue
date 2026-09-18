@@ -503,6 +503,22 @@
           "value": "marketing-agency"
         }
       ]
+    },
+    {
+      "id": "xero-preparation-stack",
+      "name": "Xero Preparation Stack",
+      "emoji": "📊",
+      "tag": "AI SKILL DROP",
+      "blurb": "Reads your Xero, finds the gaps, prepares the books for you to approve.",
+      "dropped": "",
+      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom",
+      "install_prompt": "Install the Xero preparation stack for me, following the install steps in https://github.com/SelrAI-Skool-Community/xero-preparation-stack/blob/main/INSTALL-PROMPT.md",
+      "detect": [
+        {
+          "kind": "skill",
+          "value": "xero-api-core"
+        }
+      ]
     }
   ]
 }
