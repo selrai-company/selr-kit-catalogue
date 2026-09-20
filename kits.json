@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "as_of": "2026-09-18",
+  "as_of": "2026-09-21",
   "classroom_url": "https://www.skool.com/selr-ai-2055/classroom",
   "kits": [
     {
@@ -511,7 +511,7 @@
       "tag": "AI SKILL DROP",
       "blurb": "Reads your Xero, finds the gaps, prepares the books for you to approve.",
       "dropped": "",
-      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom",
+      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/7e7ecd1f",
       "install_prompt": "Install the Xero preparation stack for me, following the install steps in https://github.com/SelrAI-Skool-Community/xero-preparation-stack/blob/main/INSTALL-PROMPT.md",
       "detect": [
         {
