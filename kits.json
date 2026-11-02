@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "as_of": "2026-09-21",
+  "as_of": "2026-11-02",
   "classroom_url": "https://www.skool.com/selr-ai-2055/classroom",
   "kits": [
     {
@@ -470,13 +470,13 @@
     },
     {
       "id": "content-creator-kit",
-      "name": "Content Creator Kit",
+      "name": "Content Editor Kit",
       "emoji": "🎥",
       "tag": "AI SKILL DROP",
-      "blurb": "One recording in, captioned reels out, scheduled to Instagram and LinkedIn.",
+      "blurb": "Edit and post what you film: captioned reels, scheduled to Instagram and LinkedIn.",
       "dropped": "2026-09-21",
       "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/3fdfa879",
-      "install_prompt": "Set up the Content Creator Kit for me, following the install steps in https://github.com/SelrAI-Skool-Community/content-creator-kit/blob/main/SETUP-PROMPT.md",
+      "install_prompt": "Set up the Content Editor Kit for me, following the install steps in https://github.com/SelrAI-Skool-Community/content-creator-kit/blob/main/SETUP-PROMPT.md",
       "detect": [
         {
           "kind": "skill",
@@ -501,6 +501,22 @@
         {
           "kind": "skill",
           "value": "marketing-agency"
+        }
+      ]
+    },
+    {
+      "id": "content-starter-kit",
+      "name": "AI Content Kit",
+      "emoji": "✨",
+      "tag": "AI SKILL DROP",
+      "blurb": "Make content with AI, no filming: avatar videos, voiceovers, images and clips.",
+      "dropped": "2026-11-02",
+      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/3fdfa879?md=131a3e43f9094c8ab389783ce039894b",
+      "install_prompt": "Set up the AI Content Kit for me, following the install steps in https://github.com/SelrAI-Skool-Community/content-starter-kit/blob/main/SETUP-PROMPT.md",
+      "detect": [
+        {
+          "kind": "skill",
+          "value": "content-starter"
         }
       ]
     }
