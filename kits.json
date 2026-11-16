@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "as_of": "2026-11-02",
+  "as_of": "2026-11-17",
   "classroom_url": "https://www.skool.com/selr-ai-2055/classroom",
   "kits": [
     {
@@ -148,7 +148,7 @@
       "blurb": "Grill me, teach and handoff — three you will use daily.",
       "dropped": "",
       "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/218d882f",
-      "install_prompt": "Clone https://github.com/SelrAI-Skool-Community/mp-skills-kit and follow docs/start/setup.md to install the Matt Pocock skills.",
+      "install_prompt": "Clone https://github.com/SelrAI-Skool-Community/matt-pocock-skills-kit and follow SETUP-PROMPT.md to install Matt Pocock's skills.",
       "detect": [
         {
           "kind": "skill",
