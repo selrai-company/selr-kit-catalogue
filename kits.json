@@ -275,22 +275,6 @@
       "detect": []
     },
     {
-      "id": "unlazy-kit",
-      "name": "Unlazy Kit",
-      "emoji": "🛑",
-      "tag": "AI SKILL DROP",
-      "blurb": "Stop Claude saying done when it isn't. Completion gates, with evidence.",
-      "dropped": "2026-08-31",
-      "classroom_url": "https://www.skool.com/selr-ai-2055/classroom/1a83bd26",
-      "install_prompt": "Set up the Unlazy Kit for me, following the install steps in https://github.com/SelrAI-Skool-Community/unlazy-kit",
-      "detect": [
-        {
-          "kind": "skill",
-          "value": "unlazy"
-        }
-      ]
-    },
-    {
       "id": "stay-on-track-kit",
       "name": "Stay On Track Kit",
       "emoji": "🎯",
